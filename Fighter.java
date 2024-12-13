@@ -1,38 +1,79 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
-public class Fightertester {
-    public static void main (String args[]){
-        Scanner in = new Scanner(System.in);
+public class Fighter {
+    private String name;
+    private String element;
+    private int attack=0;
+    private int defence =0;
+    private int reloadA;
+    private int reloadD;
+    private int health=100;
+    Scanner in = new Scanner(System.in);
 
-        //get player name
-        System.out.println("Enter player name: ");
-        String name = in.nextLine();
+    public Fighter(String name, String element){
+        this.name = name;
+        this.element = element;
+    }
 
-        //player chooses element
-        System.out.println("\uD83D\uDCA7  ⛰\uFE0F  \uD83D\uDD25  \uD83D\uDCA8");
-        System.out.println("Pick an element: ");
-        String element = in.nextLine();
+    public String playerelement(){
 
-        //call fighter class
-        Fighter p = new Fighter(name,element);
+        if(element.equals("💧")||element.equals("water")){
 
-
-        //looping player attack gameplay
-        while(true){
-            for(int i = 0; i<50; i++){
-                System.out.println();
-            }
-            System.out.println(p.playerelement());
-            p.game();
-
-            System.out.println("\nSelect an attack: ");
-            String attack = in.nextLine();
-
-            //update monster health
-            //monster attack
-            //player health update
-
-
+            return "Player " + name +"\n|￣￣￣￣￣￣￣￣￣￣￣￣￣￣|\n" +
+                    " 💧 Water attack = 3-5 \n 💧 Water defence = 5-10\n" +
+                    "|＿＿＿＿＿＿＿＿＿＿＿＿＿＿|\n" +
+                    "              \\ (•◡•) /\n" +
+                    "               \\      /\n";
+            //return "Water attack = 1 \nWater defence = 3\n";
+        }else if(element.equals("⛰\uFE0F")||element.equals("earth")) {
+            attack = 2;
+            defence = 2;
+            return "Player " + name +"\n|￣￣￣￣￣￣￣￣￣￣￣￣￣￣|\n" +
+                    " ⛰\uFE0F Earth attack = 1-10 \n ⛰\uFE0F Earth defence = 5-10\n" +
+                    "|＿＿＿＿＿＿＿＿＿＿＿＿＿＿|\n" +
+                    "              \\ (•◡•) /\n" +
+                    "               \\      /\n";
+            //return "Earth attack = 2 \nEarth defence = 2\n";
+        }else if(element.equals("\uD83D\uDD25")||element.equals("fire")) {
+            attack = 5;
+            defence = 0;
+            return "Player " + name +"\n|￣￣￣￣￣￣￣￣￣￣￣￣￣￣|\n" +
+                    " \uD83D\uDD25 Fire attack = 0-3 \n \uD83D\uDD25 Fire defence = 10-20\n" +
+                    "|＿＿＿＿＿＿＿＿＿＿＿＿＿＿|\n" +
+                    "              \\ (•◡•) /\n" +
+                    "               \\      /\n";
+            //return "Fire attack = 2 \nFire defence = 2\n";
+        }else if(element.equals("\uD83D\uDCA8")||element.equals("wind")||element.equals("air")) {
+            attack = 4;
+            defence = 1;
+            return "Player " + name +"\n|￣￣￣￣￣￣￣￣￣￣￣￣￣￣|\n" +
+                    " \uD83D\uDCA8 Wind attack = 2-10 \n \uD83D\uDCA8 Wind defence = 3-7\n" +
+                    "|＿＿＿＿＿＿＿＿＿＿＿＿＿＿|\n" +
+                    "              \\ (•◡•) /\n" +
+                    "               \\      /\n";
+            //return "Wind attack = 2 \nWind defence = 2\n";
+        }else{
+            throw new InputMismatchException("Invalid choice.");
         }
+    }
+
+    public void game(){
+        if(health > 0){
+            System.out.println("Health: " + health);
+        }else{
+            System.out.println("You have been killed.");
+            System.exit(0);
+        }
+        System.out.println(" ⠀    (\\__/)\n      (•ㅅ•)      \n" +
+                "   ＿ノヽ ノ＼＿      \n" +
+                "`/　`/ ⌒Ｙ⌒ Ｙ  ヽ     \n" +
+                "( 　(三ヽ人　 /　  |\n" +
+                "|　ﾉ⌒＼ ￣￣ヽ   ノ\n" +
+                "ヽ＿＿＿＞､＿_／\n" +
+                "    ｜( 王 ﾉ〈   \n" +
+                "    /ﾐ`ー―彡\\  \n" +
+                "   /  ╰    ╯ \\  ");
 
     }
+
 }
