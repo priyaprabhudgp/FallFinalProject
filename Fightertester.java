@@ -14,7 +14,25 @@ public class Fightertester {
 
         //call fighter class
         Fighter p = new Fighter(name,element);
-        System.out.println(p.playerelement());
+
+
+        //looping player attack gameplay
+        while(true){
+            for(int i = 0; i<50; i++){
+                System.out.println();
+            }
+            System.out.println(p.playerelement());
+            p.game();
+
+            System.out.println("\nSelect an attack: ");
+            String attack = in.nextLine();
+
+            //update monster health
+            //monster attack
+            //player health update
+
+
+        }
 
     }
 }
