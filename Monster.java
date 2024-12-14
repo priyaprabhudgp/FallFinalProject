@@ -1,16 +1,14 @@
 public class Monster {
     private String name;
     private int health;
-    private int damage;
-    private String attack;
     private String attackName;
-
+    private String attack;
+    public int attackPower;
     public String monsterImage;
 
     public Monster(String name, int health, String attack, String attackName) {
         this.name = name;
         this.health = health;
-        damage = 0;
         this.attack = attack;
         this.attackName = attackName;
     }
@@ -23,9 +21,8 @@ public class Monster {
         return health;
     }
 
-    public int getDamage(int hit) {
-        damage += hit;
-        return health -= damage;
+    public void updateHealth(int damage) {
+        health -= damage;
     }
 
     public String getAttack() {
@@ -36,5 +33,6 @@ public class Monster {
         return attackName;
     }
 
-}
 
+
+}
