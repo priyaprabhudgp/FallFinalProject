@@ -36,7 +36,7 @@ public class Fightertester {
         //call fighter class
         Fighter p = new Fighter(name,element);
 
-        //looping player attack gameplay
+        //visual first loop
         for(int i = 0; i<50; i++){
             System.out.println();
         }
@@ -44,36 +44,49 @@ public class Fightertester {
         p.game();
 
         //action input
-        System.out.println("\nType a to attack, Type s to shield, Type shieldr to reload shield, Type attackr to reload attack:");
+        System.out.println("\nType a to attack, Type s to shield, Type r to reload attack:");
         String action = in.nextLine();
 
-        if(action.equals("a") || action.equals("s") || action.equals("r")|| action.equals("shieldr")|| action.equals("attackr")){
+        if(action.equals("a") || action.equals("s") || action.equals("r")){
 
             while(!p.action(action)){
-                System.out.println("Type a to attack, Type s to shield, Type shieldr to reload shield, Type attackr to reload attack:");
+                System.out.println("Type a to attack, Type s to shield, Type r to reload attack:");
                 action = in.nextLine();
             }
-            p.action(action);
+            //p.action(action);
 
-        }else{
+        }
+        while(!action.equals("a") && !action.equals("s") && !action.equals("r")&&  !action.equals("r")){
+
             System.out.print("Invalid action, please input again.");
-            System.out.println("\nType a to attack, Type s to shield, Type shieldr to reload shield, Type attackr to reload attack:");
+            System.out.println("\nType a to attack, Type s to shield, Type r to reload attack:");
             action = in.nextLine();
         }
 
-        while(true){
+        //the rest of the visual loops
+        while(p.health>0){
             for(int i = 0; i<50; i++){
                 System.out.println();
             }
             p.game();
             p.action(action);
-            System.out.println("\nType a to attack, Type s to shield, Type shieldr to reload shield, Type attackr to reload attack:");
-            String attack = in.nextLine();
+            System.out.println("\nType a to attack, Type s to shield, Type r to reload attack:");
+            action = in.nextLine();
+            if(action.equals("a") || action.equals("s") || action.equals("r")||  action.equals("r")){
 
-            //update monster health
-            //monster attack
-            //player health update
+                while(!p.action(action)){
+                    System.out.println("Type a to attack, Type s to shield, Type r to reload attack:");
+                    action = in.nextLine();
+                }
+                //p.action(action);
 
+            }
+            while(!action.equals("a") && !action.equals("s") && !action.equals("r")&&  !action.equals("r")){
+
+                System.out.print("Invalid action, please input again.");
+                System.out.println("\nType a to attack, Type s to shield, Type r to reload attack:");
+                action = in.nextLine();
+            }
 
         }
 
