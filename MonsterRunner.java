@@ -1,11 +1,12 @@
-import java.util.Random;
+import java.util.*;
 import java.util.Scanner;
+
 public class MonsterRunner {
     public static void main(String[] args) {
         Random rand = new Random();
 
         Monster water = new Monster("Blastoise", 200, "🌊🌊🌊🌊", "Tsunami");
-        water.attackPower = rand.nextInt(0,10);
+        
         water.monsterImage = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣀⣠⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⠶⠶⠶⠚⠋⠉⠉⠉⠛⠃⠀⠉⣿⡆⠀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣏⣿⣿⣶⠀⠀⠀⣸⣿⠉⣳⣶⠾⠐⠛⠛⠉⠉⠙⢷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
@@ -40,7 +41,6 @@ public class MonsterRunner {
                 "⠸⠶⠤⠤⠤⠤⠤⠶⠶⠚⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣤⣤⣤⡤⠶⠾⠗⠛⠛⠛⠉⠉⠉⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀";
 
         Monster fire = new Monster("Charizard", 200, "\uD83D\uDD25\uD83D\uDD25\uD83D\uDD25\uD83D\uDD25", "Firestorm");
-        fire.attackPower = rand.nextInt(3,8);
         fire.monsterImage = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠄⠒⡄⠀⠀⠀⠀⠀⠀⠀⢀⡠⠤⠒⠊⠉⠉⠒⠦⣀⠀⠀⢀⡠⠤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⠁⠀⢀⡇⠀⠀⣀⠤⠄⠒⢉⡁⠀⠠⢤⠤⣴⣴⣶⣄⠈⠁⠉⠁⠀⠠⡈⠳⣄⠀⠀⠀⠀⠀⠀⠀\n" +
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠴⠋⠀⠀⡠⠋⢀⠖⠉⠀⢀⣀⢤⡞⠀⠀⠀⠸⠦⠗⠚⠛⠉⠀⠀⠀⠀⠀⠀⠀⢀⡾⠀⠀⠀⠀⠀⠀⠀\n" +
@@ -102,26 +102,41 @@ public class MonsterRunner {
         System.out.println(fire.monsterImage);
 
         String monsterSelect = in.nextLine();
-        Monster selected;
-        if(monsterSelect.equals(water.getName())){selected = water;}
-        else if (monsterSelect.equals(fire.getName())) {selected = fire;}
+
+        Monster selected = new Monster();
+
+        if(monsterSelect.equals(water.getName())){
+            selected.setAttack(water.getAttack());
+            selected.setName(water.getName());
+            selected.setAttackName(water.getAttackName());
+            selected.setHealth(water.getHealth());
+        }
+        else if (monsterSelect.equals(fire.getName())) {
+            selected.setAttack(fire.getAttack());
+            selected.setName(fire.getName());
+            selected.setAttackName(fire.getAttackName());
+            selected.setHealth(fire.getHealth());
+        }
+
+        selected.fight();
+        selected.fight();
+        selected.fight();
+        selected.fight();
+        selected.fight();
+        selected.fight();
+        selected.fight();
+        selected.fight();
+        selected.fight();
+        selected.fight();
+        selected.fight();
+        selected.fight();
 
 
         //looping player attack gameplay
-        while (p.health > 0) {
-            for (int i = 0; i < 50; i++) {
-                System.out.println();
-            }
-            System.out.println(p.playerElementDisplay());
-            p.stayAlive();
-
-            System.out.println("\nSelect an move: ");
-            String attack = in.nextLine();
+        
 
             //update monster health
             //monster attack
             //player health update
         }
-    }
-
 }
