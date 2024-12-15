@@ -3,9 +3,15 @@ public class Monster {
     private int health;
     private String attackName;
     private String attack;
-    public int attackPower;
+    private int attackPower;
     public String monsterImage;
 
+    public Monster(){
+        name = "";
+        health = 0;
+        attack = "";
+        attackName = "";
+    }
     public Monster(String name, int health, String attack, String attackName) {
         this.name = name;
         this.health = health;
@@ -32,7 +38,36 @@ public class Monster {
     public String getAttackName() {
         return attackName;
     }
+    
+    public void resetAttackPower(){
+        attackPower = (int)(Math.random()*10)+1;
+    }
+    
+    public int getAttackPower(){
+        return attackPower;
+    }
 
+    public void setName(String name) {
+         this.name = name;
+    }
+    public void setHealth(int health) {
+        this.health = health;
+    }
+    public void setAttack(String attack) {
+        this.attack = attack;
+    }
+    public void setAttackName(String attackName) {
+        this.attackName = attackName;
+    }
 
-
+    public int fight(){
+        resetAttackPower();
+        for( int i = attackPower; i<=attackPower; i++){
+            System.out.print(attack);
+        }
+        
+        System.out.println("- Strength: "+attackPower+" attacks");
+        return attackPower;
+    }
+    
 }
