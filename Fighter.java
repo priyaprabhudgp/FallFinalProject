@@ -6,11 +6,13 @@ public class Fighter {
     private int attack=0;
     private int shield =0;
     public int health=100;
+
+    private int currentattack;
     Scanner in = new Scanner(System.in);
     Random rand = new Random();
 
     /**
-     * basic fighter constructor 
+     * basic fighter constructor
      * @author ariesx2
      * @param name the player inputted name
      * @param element the player selected element
@@ -51,7 +53,7 @@ public class Fighter {
             //return "Fire attack = 2 \nFire defence = 2\n";
         }else if(element.equals("\uD83D\uDCA8")||element.equals("wind")||element.equals("air")) {
             element = "wind";
-            return "Wind abilities "  +"\n|￣￣￣￣￣￣￣￣￣￣￣￣￣￣|\n" +
+            return "Wind abilities... "  +"\n|￣￣￣￣￣￣￣￣￣￣￣￣￣￣|\n" +
                     " \uD83D\uDCA8 Wind reload = 8 \n \uD83D\uDCA8 Wind shield = 3\n" +
                     "|＿＿＿＿＿＿＿＿＿＿＿＿＿＿|\n" +
                     "              \\ (•◡•) /\n" +
@@ -99,101 +101,48 @@ public class Fighter {
 
         if(action.equals("a")) { //attack action
             if (attack <= 0) {
-                System.out.println("You cannot attack.");
+                System.out.println("You cannot attack. Please reload...");
                 return valid;
             }
-            System.out.println("⚔Attacking " + attack + "...");
+            currentattack = attack;
             attack -= attack;
             valid = true;
             return valid;
 
         }else if(action.equals("s")){ //shield action
-            /*
-            if(shield <= 0){
-                System.out.println("You cannot shield.");
-                return valid;
-            }
-
-             */
-
             if(element.equals("water")){
                 shield = 10;
-                System.out.println("⛉Shielding " + shield + "...");
-
-                //System.out.println("Reloading " + randattack + " water attacks ⚔...");
 
             }else if(element.equals("earth")) {
-
                 shield = 5;
-                System.out.println("⛉Shielding " + shield + "...");
 
             }else if(element.equals("fire")){
                 shield = 2;
-                System.out.println("⛉Shielding " + shield + "...");
 
             }else {
                 shield = 3;
-                System.out.println("⛉Shielding " + shield + "...");
             }
             valid = true;
             return valid;
 
-        }/*else if(action.equals("shieldr")){
-
-            if(element.equals("water")){
-                //randshield = 5 + (int)(Math.random()*6);
-                int wr = 2;
-                shield += wr;
-                System.out.println("Reloading " + wr + " water shields⛉...");
-
-            }else if(element.equals("earth")) {
-                //randshield = 5 + (int)(Math.random()*8);
-                int er = 3;
-                shield += er;
-                System.out.println("Reloading " + er + " earth shields⛉...");
-
-            }else if(element.equals("fire")){
-                //randshield =  (int)(Math.random()*4);
-                int fr = 4;
-                shield += fr;
-                System.out.println("Reloading " + fr + " fire shields⛉...");
-
-            }else{
-                //randshield =  3 + (int)(Math.random()*5);
-                int wr = 9;
-                shield += wr;
-                System.out.println("Reloading " + wr + " wind shields⛉...");
-            }
-            valid = true;
-            return valid;*/
+        }
 
         else if(action.equals("r")){ //reload action
             if(element.equals("water")){
-
-                //randattack = 3 + (int)(Math.random()*3);
                 int wr = 3;
                 attack += wr;
-                System.out.println("Reloading " + wr + " water attacks ⚔...");
-
-                //System.out.println("Reloading " + randattack + " water attacks ⚔...");
 
             }else if(element.equals("earth")) {
-                //randattack = 1 + (int)(Math.random()*10);
                 int er = 5;
                 attack += er;
-                System.out.println("Reloading " + er + " earth attacks ⚔...");
 
             }else if(element.equals("fire")){
                 int fr = 7;
-                //randattack =  10+ (int)(Math.random()*11);
                 attack += fr;
-                System.out.println("Reloading " + fr + " fire attacks ⚔...");
 
             }else {
-                //randattack = 2 + (int) (Math.random() * 9);
                 int wr = 8;
                 attack += wr;
-                System.out.println("Reloading " + wr + " wind attacks ⚔...");
             }
             valid = true;
             return valid;
@@ -201,6 +150,67 @@ public class Fighter {
         }
         return valid;
     }
+
+
+    public String getAction(String action){
+        if(action.equals("r")){ //reloading print
+            if(element.equals("water")){
+                return "Reloading 3 water attacks ⚔...";
+
+            }else if(element.equals("earth")) {
+                return "Reloading 5 earth attacks ⚔...";
+
+            }else if(element.equals("fire")){
+                return "Reloading 7 fire attacks ⚔...";
+
+            }else {
+                return "Reloading 8  wind attacks ⚔...";
+            }
+
+        }else if(action.equals("s")) { //shield print
+            if (element.equals("water")) {
+                return "⛉Shielding 10...";
+
+            } else if (element.equals("earth")) {
+                return "⛉Shielding 5...";
+
+            } else if (element.equals("fire")) {
+                return "⛉Shielding 2...";
+
+            }else {
+                return "⛉Shielding 3...";
+            }
+        }else if(action.equals("a")) { //attack action
+            return "⚔Attacking " + currentattack + "...";
+        }else{
+            return "";
+        }
+    }
+
+    public int getHealth(){
+        return health;
+    }
+
+    public int getshield(){
+        if(element.equals("water")){
+            return 10;
+
+        }else if(element.equals("earth")) {
+            return 5;
+
+        }else if(element.equals("fire")){
+            return 2;
+
+        }else {
+            return 3;
+        }
+    }
+
+    public int getAttack(){
+        return currentattack;
+    }
+
+
 
 
 
