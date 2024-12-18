@@ -8,7 +8,7 @@ public class Monster {
 
     public Monster(){
         name = "";
-        health = 0;
+        health = 100;
         attack = "";
         attackName = "";
     }
@@ -38,17 +38,17 @@ public class Monster {
     public String getAttackName() {
         return attackName;
     }
-    
+
     public void resetAttackPower(){
         attackPower = (int)(Math.random()*10)+1;
     }
-    
+
     public int getAttackPower(){
         return attackPower;
     }
 
     public void setName(String name) {
-         this.name = name;
+        this.name = name;
     }
     public void setHealth(int health) {
         this.health = health;
@@ -62,12 +62,9 @@ public class Monster {
 
     public int fight(){
         resetAttackPower();
-        for( int i = attackPower; i<=attackPower; i++){
-            System.out.print(attack);
-        }
-        
-        System.out.println("- Strength: "+attackPower+" attacks");
+
+        //System.out.println("Strength: "+attackPower+" attacks");
         return attackPower;
     }
-    
+
 }
