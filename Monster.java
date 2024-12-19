@@ -1,3 +1,7 @@
+/**
+ * monster class storing monster attributes and traits
+ * @author priya
+ */
 public class Monster {
     private String name;
     private int health;
@@ -6,12 +10,23 @@ public class Monster {
     private int attackPower;
     public String monsterImage;
 
+    /**
+     * default monster constructor for default monster (w/ no parameters)
+     */
     public Monster(){
         name = "";
         health = 100;
         attack = "";
         attackName = "";
     }
+
+    /**
+     * general monster constructor taking in name, health, attack, and attackName
+     * @param name the name of selected monster
+     * @param health the health of monster
+     * @param attack the monster attack emojis
+     * @param attackName the monster attack name
+     */
     public Monster(String name, int health, String attack, String attackName) {
         this.name = name;
         this.health = health;
@@ -19,52 +34,50 @@ public class Monster {
         this.attackName = attackName;
     }
 
+    //getter methods
     public String getName() {
         return name;
     }
-
     public int getHealth() {
         return health;
     }
-
-    public void updateHealth(int damage) {
-        health -= damage;
-    }
-
     public String getAttack() {
         return attack;
     }
-
     public String getAttackName() {
         return attackName;
     }
-
-    public void resetAttackPower(){
-        attackPower = (int)(Math.random()*10)+1;
-    }
-
-    public int getAttackPower(){
+    public int getAttackPower(){ //gets current monster attack value
         return attackPower;
     }
 
-    public void setName(String name) {
+    //setter methods
+    public void setName(String name) { //sets monster name
         this.name = name;
     }
-    public void setHealth(int health) {
+    public void setHealth(int health) { //sets monster health
         this.health = health;
     }
-    public void setAttack(String attack) {
+    public void setAttack(String attack) { //sets monster attack emojis
         this.attack = attack;
     }
-    public void setAttackName(String attackName) {
+    public void setAttackName(String attackName) { //sets monster attack name
         this.attackName = attackName;
     }
 
-    public int fight(){
-        resetAttackPower();
-
-        //System.out.println("Strength: "+attackPower+" attacks");
-        return attackPower;
+    /**
+     * updates monster health with fighter attack
+     * @param damage the attack of fighter
+     */
+    public void updateHealth(int damage) {
+        health -= damage;
     }
+    /**
+     * randomly resets monsters next attack value
+     */
+    public void fight(){
+        attackPower = (int)(Math.random()*10)+1;
+    }
+
 
 }
